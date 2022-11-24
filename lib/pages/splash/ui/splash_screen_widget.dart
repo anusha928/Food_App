@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app/pages/auth/signin/signin_widget.dart';
-import 'package:food_app/pages/auth/signup/signup_widget.dart';
-import 'package:food_app/pages/home/widgets/homepagewidget.dart';
+import 'package:food_app/pages/auth/signin/signinScreen.dart';
 
 import 'package:food_app/pages/splash/cubit/startup_cubit.dart';
 import 'package:food_app/pages/splash/cubit/startup_state.dart';
@@ -18,14 +16,22 @@ class SplashScreenWidget extends StatefulWidget {
   State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
 }
 
-class _SplashScreenWidgetState extends State<SplashScreenWidget> {
+class _SplashScreenWidgetState extends State<SplashScreenWidget>
+    with TickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController _controller;
+
   @override
   void initState() {
     super.initState();
+    _controller =
+        AnimationController(vsync: this, duration:const Duration(seconds: 2))..forward();
+    animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
+    
     context.read<StartupCubit>().fetchData();
   }
 
-  @override  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<StartupCubit, StartupState>(
@@ -33,7 +39,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           if (state is StartupSuccess) {
             Navigator.of(context).pushAndRemoveUntil(
                 PageTransition(
-                    child: SignInWidget(), type: PageTransitionType.fade),
+                    child: SigninScreen(), type: PageTransitionType.fade),
                 (route) => false);
           }
         },
@@ -43,9 +49,12 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/image/logo part 1.png",
-                width: Dimension.splashimage1height,
+              ScaleTransition(
+                scale: animation,
+                child: Image.asset(
+                  "assets/image/logo part 1.png",
+                  width: Dimension.splashimage1height,
+                ),
               ),
               Image.asset(
                 "assets/image/logo part 2.png",
