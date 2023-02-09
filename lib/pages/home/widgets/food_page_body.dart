@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/data.dart';
 import 'package:food_app/pages/foodDetail/popularFoodDetail.dart';
 import 'package:food_app/pages/foodDetail/recomendedfood.dart';
 
@@ -11,7 +12,10 @@ import 'package:food_app/widgets/smalltexts.dart';
 import 'package:page_transition/page_transition.dart';
 
 class FoodPageBody extends StatefulWidget {
-  const FoodPageBody({super.key});
+ 
+  FoodPageBody({
+    super.key,
+  });
 
   @override
   State<FoodPageBody> createState() => _FoodPageBodyState();
@@ -51,8 +55,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           height: Dimension.container,
           child: PageView.builder(
               controller: pageController,
-              itemCount: 5,
+              itemCount: recomended_images.length,
               itemBuilder: (context, position) {
+                
                 return buildPageitem(position);
               }),
         ),
@@ -192,6 +197,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   }
 
   Widget buildPageitem(int index) {
+    
     var screenwidth = MediaQuery.of(context).size.width;
     print("screenwight: $screenwidth");
     return GestureDetector(
@@ -208,10 +214,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimension.height26),
                 //color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
-                image: const DecorationImage(
-                    image: AssetImage(
-                      "assets/image/food1.jpg",
-                    ),
+                image: DecorationImage(
+                    image: AssetImage("assets/image/food4.jpg"),
                     fit: BoxFit.cover)),
           ),
           Align(
@@ -241,7 +245,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BigTexts(text: "Chicken Leg Piece"),
+                    BigTexts(text: "kefbwjf ibsub ijfjs "),
                     SizedBox(
                       height: Dimension.height10,
                     ),

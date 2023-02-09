@@ -22,12 +22,15 @@ class AccountWidget extends StatelessWidget {
           bigTexts
         ],
       ),
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
-            blurRadius: 1,
-            offset: Offset(0, 2),
-            color: Colors.grey.withOpacity(0.2))
-      ]),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimension.height17),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 1,
+                offset: Offset(0, 2),
+                color: Colors.grey.withOpacity(0.2))
+          ]),
     );
   }
 }

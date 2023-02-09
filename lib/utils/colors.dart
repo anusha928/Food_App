@@ -11,7 +11,7 @@ class AppColors {
   //static final Color mainColor = const Color(0xFFfa7552);
 
   static final Color paraColor = const Color(0xFF8f837f);
-  static final Color buttonBackgroundColor = Color.fromARGB(255, 179, 179, 175);
+  static final Color buttonBackgroundColor = Color.fromARGB(255, 168, 168, 165);
   static final Color signColor = const Color(0xFFa9a29f);
   static final Color titleColor = const Color(0xFF5c524f);
 

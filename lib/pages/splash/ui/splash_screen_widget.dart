@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/pages/auth/signin/signinScreen.dart';
+import 'package:food_app/pages/home/widgets/homepagewidget.dart';
 
 import 'package:food_app/pages/splash/cubit/startup_cubit.dart';
 import 'package:food_app/pages/splash/cubit/startup_state.dart';
@@ -39,7 +40,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
           if (state is StartupSuccess) {
             Navigator.of(context).pushAndRemoveUntil(
                 PageTransition(
-                    child: SigninScreen(), type: PageTransitionType.fade),
+                    child: HomePageWidget(), type: PageTransitionType.fade),
                 (route) => false);
           }
         },
